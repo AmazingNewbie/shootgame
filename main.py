@@ -3,11 +3,12 @@ import pygame
 from game import Game
 pygame.init()
 pygame.display.set_caption("manger")
-ecran = pygame.display.set_mode((1500, 800))
+ecran = pygame.display.set_mode((1500, 633))
 running = True
 background = pygame.image.load(
     'PygameAssets-main/bg.jpg'
 )
+background = pygame.transform.scale(background,(1500,633))
 game = Game()
 while running:
     ecran.blit(background, (0, 0))
@@ -21,11 +22,11 @@ while running:
         monster.step()
     game.player.shootingright.draw(ecran)
     game.player.shootingleft.draw(ecran)
-    game.all_monster.draw(ecran)
+    game.all_monsters.draw(ecran)
     pygame.display.flip()
-    if game.pressed.get(pygame.K_d) and game.player.rect.x <= 950:
+    if game.pressed.get(pygame.K_d) and game.player.rect.x <= 2000:
         game.player.rigth()
-    elif game.pressed.get(pygame.K_s) and game.player.rect.y <= 510:
+    elif game.pressed.get(pygame.K_s) and game.player.rect.y <= 1000:
         game.player.down()
     elif game.pressed.get(pygame.K_q) and game.player.rect.x >= 0:
         game.player.left()

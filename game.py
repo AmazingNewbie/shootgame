@@ -6,12 +6,11 @@ class Game:
         self.players = pygame.sprite.Group()
         self.player = joueur(self)
         self.players.add(self.player)
+        self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
         self.spawning()
     def spawning(self):
-        mob=monster()
-        self.all_monsters.add(
-            mob
-        )
+        mob = monster(self)
+        self.all_monsters.add(mob)
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)

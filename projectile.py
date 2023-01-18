@@ -23,7 +23,7 @@ class shoot(pygame.sprite.Sprite):
         self.image = pygame.transform.rotozoom(
             self.origin,
             self.angle,
-            math.sin(8)
+            1
         )
         self.rect=self.image.get_rect(
             center=self.rect.center
@@ -32,12 +32,12 @@ class shoot(pygame.sprite.Sprite):
     def rightshot(self):
         self.rect.x += self.speed
         self.rotation()
-        if math.sqrt((self.rect.y-self.player.rect.y)**2 + (self.rect.x-self.player.rect.x)**2) > self.portee:
+        if math.sqrt((self.rect.y-self.player.rect.y)**2 + (self.rect.x-self.player.rect.x)**2) > self.portee or self.player.game.collision(self,self.player.game.all_monsters):
             self.rightdelete()
     def leftshot(self):
         self.rect.x -= self.speed
         self.rotation()
-        if math.sqrt((self.rect.y-self.player.rect.y)**2 +(self.rect.x-self.player.rect.x)**2) > self.portee:
+        if math.sqrt((self.rect.y-self.player.rect.y)**2 +(self.rect.x-self.player.rect.x)**2) > self.portee or self.player.game.collision(self,self.player.game.all_monsters):
             self.leftdelete()
     def leftdelete(self):
        self.player.shootingleft.remove(self)

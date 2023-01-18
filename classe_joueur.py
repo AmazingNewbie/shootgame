@@ -15,14 +15,14 @@ class joueur(pygame.sprite.Sprite):
         self.rect.x = 500
         self.rect.y = 70
     def rigth(self):
-        if not self.game.collision(self,self.game.all_monsters):
+        if not self.game.collision(self, self.game.all_monsters):
             self.rect.x += self.speed
     def left(self):
         self.rect.x -= self.speed
     def up(self):
-        self.rect.y -= self.speed
+            self.rect.y -= self.speed
     def down(self):
-        self.rect.y += self.speed
+            self.rect.y += self.speed
     def tirerdroite(self):
         self.shootingright.add(shoot(self))
     def tirergauche(self):
