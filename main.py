@@ -12,6 +12,17 @@ background = pygame.transform.scale(background,(1500,633))
 game = Game()
 while running:
     ecran.blit(background, (0, 0))
-
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            running = False
+            pygame.quit()
+        elif i.type == pygame.KEYDOWN:
+            game.pressed[i.key] = True
+            if i.key == pygame.K_RIGHT:
+                game.player.tirerdroite()
+            elif i.key == pygame.K_LEFT:
+                game.player.tirergauche()
+        elif i.type == pygame.KEYUP:
+            game.pressed[i.key] = False
 
     
