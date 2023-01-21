@@ -1,5 +1,9 @@
 import pygame
 import math
+
+import game
+
+
 class shoot(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
@@ -32,13 +36,24 @@ class shoot(pygame.sprite.Sprite):
     def rightshot(self):
         self.rect.x += self.speed
         self.rotation()
-        if math.sqrt((self.rect.y-self.player.rect.y)**2 + (self.rect.x-self.player.rect.x)**2) > self.portee or self.player.game.collision(self,self.player.game.all_monsters):
+        for m in self.player.game.collision(self, self.player.game.all_monsters):
+            m.damage(self.player.attack)
             self.rightdelete()
+
+        if math.sqrt((self.rect.y - self.player.rect.y) ** 2 + (self.rect.x - self.player.rect.x) ** 2) > self.portee:
+            self.rightdelete()
+
     def leftshot(self):
         self.rect.x -= self.speed
         self.rotation()
-        if math.sqrt((self.rect.y-self.player.rect.y)**2 +(self.rect.x-self.player.rect.x)**2) > self.portee or self.player.game.collision(self,self.player.game.all_monsters):
+        for m in self.player.game.collision(self,self.player.game.all_monsters):
+            m.damage(self.player.attack)
             self.leftdelete()
+
+
+        if math.sqrt((self.rect.y - self.player.rect.y) ** 2 + (self.rect.x - self.player.rect.x) ** 2) > self.portee:
+            self.leftdelete()
+
     def leftdelete(self):
        self.player.shootingleft.remove(self)
     def rightdelete(self):

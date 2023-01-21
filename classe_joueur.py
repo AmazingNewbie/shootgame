@@ -4,9 +4,9 @@ class joueur(pygame.sprite.Sprite):
     def __init__(self,game):
         super().__init__()
         self.game = game
-        self.pv = 20
+        self.pv = 50
         self.pvlimit = 150
-        self.attack = 0
+        self.attack = 55
         self.speed = 1
         self.shootingright = pygame.sprite.Group()
         self.shootingleft= pygame.sprite.Group()
@@ -27,3 +27,11 @@ class joueur(pygame.sprite.Sprite):
         self.shootingright.add(shoot(self))
     def tirergauche(self):
         self.shootingleft.add(shoot(self))
+    def health_bar(self,surface):
+        color=(99,111,23)
+        bar_position=[self.rect.x,self.rect.y,self.pv*10, 7]
+        pygame.draw.rect(surface,color,bar_position)
+    def damage(self,value):
+        if self.pv>=4:
+            self.pv -= value
+
