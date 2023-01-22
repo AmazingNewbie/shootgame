@@ -1,24 +1,29 @@
 import pygame
 from game import Game
+
 pygame.init()
 pygame.display.set_caption("manger")
 ecran = pygame.display.set_mode((1500, 633))
 running = True
-menu=pygame.image.load("PygameAssets-main/banner.png")
-menu=pygame.transform.scale(menu,(500,500))
-menurect= menu.get_rect()
-menurect.x=500
-menurect.y=67
-
+menu = pygame.image.load("PygameAssets-main/banner.png")
+menu = pygame.transform.scale(menu, (500, 500))
+menurect = menu.get_rect()
+menurect.x = 500
+menurect.y = 67
+button = pygame.image.load('PygameAssets-main/button.png')
+button = pygame.transform.scale(button, (400, 150))
+button_rect = button.get_rect()
+button_rect.x,button_rect.y = menurect.x,567
 background = pygame.image.load('PygameAssets-main/bg.jpg')
-background = pygame.transform.scale(background,(1500,633))
+background = pygame.transform.scale(background, (1500, 633))
 game = Game()
 while running:
     ecran.blit(background, (0, 0))
     if game.playing:
         game.update(ecran)
     else:
-        ecran.blit(menu,menurect)
+        ecran.blit(menu, menurect)
+        ecran.blit(button,button_rect)
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             running = False
