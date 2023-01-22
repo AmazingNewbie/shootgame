@@ -3,12 +3,9 @@ import random
 class monster(pygame.sprite.Sprite):
     def __init__(self, game):
         super().__init__()
-
         self.pv=100
         self.pvlimit = 100
-        self.image=pygame.image.load(
-            "PygameAssets-main/mummy.png"
-        )
+        self.image=pygame.image.load("PygameAssets-main/mummy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1800
         self.rect.y = random.randint(0, 750)
@@ -27,7 +24,6 @@ class monster(pygame.sprite.Sprite):
         bgposition=[self.rect.x, self.rect.y-5, self.pvlimit, 5]
         pygame.draw.rect(surface,colorbg,bgposition)
         pygame.draw.rect(surface,bar_color,bar_position)
-
     def damage(self,amount):
         self.pv-= amount
 

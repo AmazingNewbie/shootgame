@@ -16,30 +16,27 @@ class Game:
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
     def update(self,ecran):
-
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:
-        e.rightshot()
-
+            e.rightshot()
         for t in self.player.shootingleft:
-        t.leftshot()
+            t.leftshot()
         for monster in self.all_monsters:
-        monster.step()
-        monster.update_health_bar(ecran)
+            monster.step()
+            monster.update_health_bar(ecran)
         self.player.shootingright.draw(ecran)
         self.player.shootingleft.draw(ecran)
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
-        pygame.display.flip()
-        if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:
-        self.player.rigth()
-        elif self.pressed.get(pygame.K_s) and self.player.rect.y <= 1000:
-        self.player.down()
-        elif self.pressed.get(pygame.K_q) and self.player.rect.x >= 0:
-        self.player.left()
-        elif self.pressed.get(pygame.K_z) and self.player.rect.y >= 0:
-        self.player.up()
 
+        if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:
+            self.player.rigth()
+        elif self.pressed.get(pygame.K_s) and self.player.rect.y <= 1000:
+            self.player.down()
+        elif self.pressed.get(pygame.K_q) and self.player.rect.x >= 0:
+            self.player.left()
+        elif self.pressed.get(pygame.K_z) and self.player.rect.y >= 0:
+            self.player.up()
 
 
 

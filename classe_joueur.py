@@ -34,4 +34,3 @@ class joueur(pygame.sprite.Sprite):
     def damage(self,value):
         if self.pv>=4:
             self.pv -= value
-

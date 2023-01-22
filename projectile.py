@@ -1,6 +1,5 @@
 import pygame
 import math
-
 class shoot(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
@@ -38,5 +37,3 @@ class shoot(pygame.sprite.Sprite):
        self.player.shootingleft.remove(self)
     def rightdelete(self):
         self.player.shootingright.remove(self)
-
-
