@@ -42,5 +42,7 @@ class joueur(pygame.sprite.Sprite):
         pygame.draw.rect(surface, color, bar_position)
 
     def damage(self, value):
-        if self.pv >= 4:
+        if self.pv >= 0:
             self.pv -= value
+        else:
+            self.game.playing = False

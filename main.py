@@ -11,9 +11,10 @@ menurect = menu.get_rect()
 menurect.x = 500
 menurect.y = 67
 button = pygame.image.load('PygameAssets-main/button.png')
-button = pygame.transform.scale(button, (400, 150))
+button = pygame.transform.scale(button,(400,150))
 button_rect = button.get_rect()
-button_rect.x,button_rect.y = menurect.x,567
+button_rect.x=550
+button_rect.y =450
 background = pygame.image.load('PygameAssets-main/bg.jpg')
 background = pygame.transform.scale(background, (1500, 633))
 game = Game()
@@ -23,7 +24,8 @@ while running:
         game.update(ecran)
     else:
         ecran.blit(menu, menurect)
-        ecran.blit(button,button_rect)
+        ecran.blit(button, button_rect)
+    pygame.display.flip()
     for i in pygame.event.get():
         if i.type == pygame.QUIT:
             running = False
@@ -36,4 +38,7 @@ while running:
                 game.player.tirergauche()
         elif i.type == pygame.KEYUP:
             game.pressed[i.key] = False
-    pygame.display.flip()
+        elif i.type == pygame.MOUSEBUTTONDOWN:
+            if button_rect.collidepoint(i.pos):
+                game.playing = True
+

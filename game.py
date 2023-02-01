@@ -15,6 +15,8 @@ class Game:
         self.all_monsters.add(mob)
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+    def over(self):
+
     def update(self,ecran):
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:
