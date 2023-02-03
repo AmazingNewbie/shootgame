@@ -11,10 +11,10 @@ menurect = menu.get_rect()
 menurect.x = 500
 menurect.y = 67
 button = pygame.image.load('PygameAssets-main/button.png')
-button = pygame.transform.scale(button,(400,150))
+button = pygame.transform.scale(button, (400, 150))
 button_rect = button.get_rect()
-button_rect.x=550
-button_rect.y =450
+button_rect.x = 550
+button_rect.y = 450
 background = pygame.image.load('PygameAssets-main/bg.jpg')
 background = pygame.transform.scale(background, (1500, 633))
 game = Game()
@@ -42,4 +42,3 @@ while running:
         elif i.type == pygame.MOUSEBUTTONDOWN:
             if button_rect.collidepoint(i.pos):
                 game.over()
-

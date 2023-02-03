@@ -1,11 +1,13 @@
 import pygame
 from classe_joueur import joueur
 from monster import monster
+from comet import Cometfall
 class Game:
     def __init__(self):
         self.playing = False
         self.players = pygame.sprite.Group()
         self.player = joueur(self)
+        self.comets = Cometfall()
         self.players.add(self.player)
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
@@ -32,6 +34,8 @@ class Game:
         self.player.shootingleft.draw(ecran)
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
+        self.comets.UpdateBar(ecran)
+
 
         if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:
             self.player.rigth()
