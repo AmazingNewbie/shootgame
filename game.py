@@ -9,14 +9,16 @@ class Game:
         self.players.add(self.player)
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
-        self.spawning()
     def spawning(self):
         mob = monster(self)
         self.all_monsters.add(mob)
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
     def over(self):
-
+        self.all_monsters = pygame.sprite.Group()
+        self.player.pv = 50
+        self.playing = True
+        self.spawning()
     def update(self,ecran):
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:

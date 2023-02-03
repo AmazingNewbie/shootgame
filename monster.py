@@ -10,7 +10,7 @@ class monster(pygame.sprite.Sprite):
         self.image = pygame.image.load("PygameAssets-main/mummy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1800
-        self.rect.y = random.randint(0, 750)
+        self.rect.y = random.randint(0, 600)
         self.strength = 1
         self.speed = 1
         self.game = game
@@ -33,6 +33,7 @@ class monster(pygame.sprite.Sprite):
         self.pv -= amount
         if self.pv <= 0:
             self.game.all_monsters.remove(self)
+            self.game.spawning()
 
     def destroy(self):
         if self.pv <= 0:

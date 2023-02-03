@@ -19,10 +19,11 @@ background = pygame.image.load('PygameAssets-main/bg.jpg')
 background = pygame.transform.scale(background, (1500, 633))
 game = Game()
 while running:
+
     ecran.blit(background, (0, 0))
     if game.playing:
         game.update(ecran)
-    else:
+    elif not game.playing:
         ecran.blit(menu, menurect)
         ecran.blit(button, button_rect)
     pygame.display.flip()
@@ -40,5 +41,5 @@ while running:
             game.pressed[i.key] = False
         elif i.type == pygame.MOUSEBUTTONDOWN:
             if button_rect.collidepoint(i.pos):
-                game.playing = True
+                game.over()
 

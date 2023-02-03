@@ -38,7 +38,7 @@ class joueur(pygame.sprite.Sprite):
 
     def health_bar(self, surface):
         color = (99, 111, 23)
-        bar_position = [self.rect.x, self.rect.y, self.pv * 10, 7]
+        bar_position = [self.rect.x, self.rect.y, self.pv, 7]
         pygame.draw.rect(surface, color, bar_position)
 
     def damage(self, value):
