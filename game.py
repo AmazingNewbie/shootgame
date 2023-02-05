@@ -1,7 +1,7 @@
 import pygame
 from classe_joueur import joueur
 from monster import monster
-from comet import Cometfall
+from cometfall import Cometfall
 class Game:
     def __init__(self):
         self.playing = False
@@ -35,6 +35,7 @@ class Game:
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
         self.comets.UpdateBar(ecran)
+
 
 
         if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:

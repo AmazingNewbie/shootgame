@@ -31,10 +31,7 @@ class monster(pygame.sprite.Sprite):
 
     def damage(self, amount):
         self.pv -= amount
-        if self.pv <= 0:
+        if self.pv <= 0 or self.rect.x==0:
             self.game.all_monsters.remove(self)
             self.game.spawning()
 
-    def destroy(self):
-        if self.pv <= 0:
-            self.remove()
