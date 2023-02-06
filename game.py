@@ -7,7 +7,7 @@ class Game:
         self.playing = False
         self.players = pygame.sprite.Group()
         self.player = joueur(self)
-        self.comets = Cometfall()
+        self.comets = Cometfall(self)
         self.players.add(self.player)
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
@@ -30,17 +30,14 @@ class Game:
         for monster in self.all_monsters:
             monster.step()
             monster.update_health_bar(ecran)
+        for comets in self.comets.cometsgroup:
+            comets.falling()
         self.player.shootingright.draw(ecran)
         self.player.shootingleft.draw(ecran)
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
         self.comets.UpdateBar(ecran)
         self.comets.cometsgroup.draw(ecran)
-        for comets in self.comets.cometsgroup:
-            comets.falling()
-
-
-
         if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:
             self.player.rigth()
         elif self.pressed.get(pygame.K_s) and self.player.rect.y <= 1000:
