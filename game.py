@@ -35,6 +35,9 @@ class Game:
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
         self.comets.UpdateBar(ecran)
+        self.comets.cometsgroup.draw(ecran)
+        for comets in self.comets.cometsgroup:
+            comets.falling()
 
 
 

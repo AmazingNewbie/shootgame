@@ -6,6 +6,9 @@ class Cometfall:
         self.prozent = 0
         self.cometsgroup = pygame.sprite.Group()
 
+    def event(self):
+        self.cometsgroup.add(meteorite())
+
     def AddToProzent(self):
         self.prozent += 0.02
     def ResetProzent(self):
@@ -15,6 +18,7 @@ class Cometfall:
     def ProzentComplete(self):
         if self.Plain():
             self.ResetProzent()
+            self.event()
     def UpdateBar(self, surface):
         self.AddToProzent()
         self.ProzentComplete()
