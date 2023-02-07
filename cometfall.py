@@ -7,6 +7,7 @@ class Cometfall:
         self.prozent = 0
         self.cometsgroup = pygame.sprite.Group()
         self.game=game
+        self.fall_mode = False
 
     def event(self):
         self.cometsgroup.add(meteorite(self))
@@ -21,10 +22,10 @@ class Cometfall:
         return self.prozent >= 10
 
     def ProzentComplete(self):
-        if self.Plain():
-            self.ResetProzent()
+        if self.Plain() and len(self.game.all_monsters) == 0:
             self.event()
-
+            self.ResetProzent()
+            self.fall_mode = True
     def UpdateBar(self, surface):
         self.AddToProzent()
         self.ProzentComplete()
