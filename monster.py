@@ -18,8 +18,11 @@ class monster(pygame.sprite.Sprite):
     def step(self):
         if not self.game.collision(self, self.game.players):
             self.rect.x -= self.speed
+            self.respawn()
         else:
             self.game.player.damage(self.strength)
+
+
 
     def update_health_bar(self, surface):
         bar_color = (5, 88, 6)
@@ -31,7 +34,9 @@ class monster(pygame.sprite.Sprite):
 
     def damage(self, amount):
         self.pv -= amount
-        if self.pv <= 0 or self.rect.x==0:
+        self.respawn()
+    def respawn(self):
+        if self.pv <= 0 or self.rect.x<=0:
             self.game.all_monsters.remove(self)
             self.game.comets.ProzentComplete()
             if not self.game.comets.Plain():
