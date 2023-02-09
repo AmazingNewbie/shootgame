@@ -13,7 +13,7 @@ class Cometfall:
         self.cometsgroup.add(meteorite(self))
 
     def AddToProzent(self):
-        self.prozent += 0.02
+        self.prozent += 0.002
 
     def ResetProzent(self):
         self.prozent = 0
@@ -24,11 +24,9 @@ class Cometfall:
     def ProzentComplete(self):
         if self.Plain() and len(self.game.all_monsters) == 0:
             self.event()
-            self.ResetProzent()
-            self.fall_mode = True
+            self.fall_mode = False
     def UpdateBar(self, surface):
         self.AddToProzent()
-        self.ProzentComplete()
         bar_color = (250, 50, 50)
         bg_color = (4, 3, 2)
         bar_position = [20, 0, self.prozent * 100, 20]
