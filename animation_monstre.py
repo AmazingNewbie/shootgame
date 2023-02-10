@@ -4,6 +4,8 @@ class animation(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load(f'PygameAssets-main/{spritename}.png')
 def imagesload(spritename):
+        image=[]
         path = f"PygameAssets-main/{spritename}/{spritename}"
         for num in range(1,24):
-            path+num+".png"
+            way=path+num+".png"
+            image.append(pygame.image.load(way))
