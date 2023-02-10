@@ -10,7 +10,8 @@ class Cometfall:
         self.fall_mode = False
 
     def event(self):
-        self.cometsgroup.add(meteorite(self))
+        for element in range(1,6,2):
+            self.cometsgroup.add(meteorite(self))
 
     def AddToProzent(self):
         self.prozent += 0.002

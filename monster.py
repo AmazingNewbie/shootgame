@@ -1,13 +1,12 @@
 import pygame
 import random
+import animation_monstre
 
-
-class monster(pygame.sprite.Sprite):
+class monster(animation_monstre.animation):
     def __init__(self, game):
-        super().__init__()
+        super().__init__("mummy")
         self.pv = 100
         self.pvlimit = 100
-        self.image = pygame.image.load("PygameAssets-main/mummy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 1800
         self.rect.y = random.randint(0, 600)
