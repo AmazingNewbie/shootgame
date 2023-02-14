@@ -1,6 +1,6 @@
 import pygame
 from classe_joueur import joueur
-from monster import monster
+from monster import mummy,Alien
 from cometfall import Cometfall
 class Game:
     def __init__(self):
@@ -11,16 +11,16 @@ class Game:
         self.players.add(self.player)
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
-    def spawning(self):
-        mob = mummy(self)
-        self.all_monsters.add(mob)
+    def spawning(self,monster_type):
+        self.all_monsters.add(monster_type.__call__(self))
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
     def over(self):
         self.all_monsters = pygame.sprite.Group()
         self.player.pv = 50
         self.playing = True
-        self.spawning()
+        self.spawning(mummy)
+        self.spawning(Alien)
     def update(self,ecran):
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:

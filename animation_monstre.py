@@ -1,8 +1,9 @@
 import pygame
 class animation(pygame.sprite.Sprite):
-    def __init__(self,spritename):
+    def __init__(self,spritename, size=(200,200)):
         super().__init__()
         self.image = pygame.image.load(f'PygameAssets-main/{spritename}.png')
+        self.image = pygame.transform.scale(self.image,size)
         self.current_image = 0
         self.images= animations.get(spritename)
         self.event = False
@@ -21,5 +22,6 @@ def imagesload(spritename):
         return image
 animations={
     'mummy':imagesload('mummy'),
-    'player': imagesload('player')
+    'player': imagesload('player'),
+    'alien':imagesload('alien')
 }
