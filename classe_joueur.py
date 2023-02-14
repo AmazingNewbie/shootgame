@@ -1,10 +1,11 @@
 import pygame
 from projectile import shoot
+import animation_monstre
 
 
-class joueur(pygame.sprite.Sprite):
+class joueur(animation_monstre.animation):
     def __init__(self, game):
-        super().__init__()
+        super().__init__('player')
         self.game = game
         self.pv = 50
         self.pvlimit = 150
@@ -46,3 +47,5 @@ class joueur(pygame.sprite.Sprite):
             self.pv -= value
         else:
             self.game.playing = False
+    def animate(self):
+        self.animation()

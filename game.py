@@ -25,11 +25,14 @@ class Game:
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:
             e.rightshot()
+            self.player.event = True
         for t in self.player.shootingleft:
             t.leftshot()
+            self.player.event = True
         for monster in self.all_monsters:
             monster.step()
             monster.update_health_bar(ecran)
+            monster.update_animation()
         for comets in self.comets.cometsgroup:
             comets.falling()
         self.player.shootingright.draw(ecran)
@@ -37,6 +40,8 @@ class Game:
         self.all_monsters.draw(ecran)
         self.player.health_bar(ecran)
         self.comets.UpdateBar(ecran)
+        if self.player.event:
+            self.player.animate()
         self.comets.cometsgroup.draw(ecran)
         if self.pressed.get(pygame.K_d) and self.player.rect.x <= 2000:
             self.player.rigth()

@@ -42,4 +42,3 @@ while running:
         elif i.type == pygame.MOUSEBUTTONDOWN:
             if button_rect.collidepoint(i.pos):
                 game.over()
-        print(game.comets.cometsgroup)

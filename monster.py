@@ -40,4 +40,6 @@ class monster(animation_monstre.animation):
             self.game.comets.ProzentComplete()
             if not self.game.comets.Plain():
                 self.game.spawning()
+    def update_animation(self):
+        self.animation()
 
