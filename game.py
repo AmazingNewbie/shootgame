@@ -12,7 +12,7 @@ class Game:
         self.all_monsters = pygame.sprite.Group()
         self.pressed = {}
     def spawning(self):
-        mob = monster(self)
+        mob = mummy(self)
         self.all_monsters.add(mob)
     def collision(self,sprite,group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)

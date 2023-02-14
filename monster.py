@@ -3,8 +3,8 @@ import random
 import animation_monstre
 
 class monster(animation_monstre.animation):
-    def __init__(self, game):
-        super().__init__("mummy")
+    def __init__(self, game,name):
+        super().__init__(name)
         self.pv = 100
         self.pvlimit = 100
         self.rect = self.image.get_rect()
@@ -42,4 +42,8 @@ class monster(animation_monstre.animation):
                 self.game.spawning()
     def update_animation(self):
         self.animation()
+class mummy(monster):
+    def __init__(self, game):
+        super().__init__(game, "mummy")
+
 
