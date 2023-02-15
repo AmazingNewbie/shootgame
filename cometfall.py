@@ -26,6 +26,7 @@ class Cometfall:
         if self.Plain() and len(self.game.all_monsters) == 0:
             self.event()
             self.fall_mode = False
+            self.game.spawning(mummy)
     def UpdateBar(self, surface):
         self.AddToProzent()
         bar_color = (250, 50, 50)

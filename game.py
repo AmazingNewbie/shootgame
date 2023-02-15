@@ -2,6 +2,8 @@ import pygame
 from classe_joueur import joueur
 from monster import mummy,Alien
 from cometfall import Cometfall
+clock= pygame.time.Clock()
+FPS = 120
 class Game:
     def __init__(self):
         self.playing = False
@@ -19,8 +21,8 @@ class Game:
         self.all_monsters = pygame.sprite.Group()
         self.player.pv = 50
         self.playing = True
-        self.spawning(mummy)
         self.spawning(Alien)
+        self.spawning(mummy)
     def update(self,ecran):
         ecran.blit(self.player.image, self.player.rect)
         for e in self.player.shootingright:
@@ -51,7 +53,7 @@ class Game:
             self.player.left()
         elif self.pressed.get(pygame.K_z) and self.player.rect.y >= 0:
             self.player.up()
-
+    clock.tick(FPS)
 
 
 

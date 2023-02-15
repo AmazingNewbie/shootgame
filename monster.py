@@ -39,7 +39,9 @@ class monster(animation_monstre.animation):
         if self.pv <= 0 or self.rect.x<=0:
             self.game.all_monsters.remove(self)
             self.game.comets.ProzentComplete()
-            return True
+            if not self.game.comets.Plain():
+                self.game.spawning(mummy)
+
     def update_animation(self):
         self.animation()
 class mummy(monster):

@@ -21,7 +21,7 @@ def imagesload(spritename):
             image.append(pygame.image.load(way))
         return image
 animations={
-    'mummy':imagesload('mummy'),
+    'mummy': imagesload('mummy'),
     'player': imagesload('player'),
-    'alien':imagesload('alien')
+    'alien': imagesload('alien')
 }

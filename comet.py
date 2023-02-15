@@ -5,15 +5,14 @@ class meteorite(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("PygameAssets-main/comet.png")
         self.rect = self.image.get_rect()
-        self.rect.x = randint(20,500)
-        self.speed = randint(1,3)
+        self.rect.x = randint(20, 500)
+        self.speed = randint(1, 3)
         self.comet = fall
     def delete(self):
         self.comet.cometsgroup.remove(self)
         if len(self.comet.cometsgroup) == 0:
             self.comet.game.comets.ResetProzent()
             self.comet.cometsgroup.fall_mode = False
-            self.comet.game.spawning()
     def falling(self):
         self.rect.y += self.speed
         if self.rect.y >= 600:
